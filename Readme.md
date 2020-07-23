@@ -10,6 +10,7 @@ Practice the following concepts:
 - documentation
 - Meson build system
 - Unit testing
+- continuous integration
 - github issue tracking and Pull Requests
 
 Stretch Goals:
