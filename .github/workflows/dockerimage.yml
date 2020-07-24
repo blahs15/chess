@@ -51,6 +51,8 @@ jobs:
     name: docker_build
     runs-on: ubuntu-20.04
     steps:
+    - name: ls
+      run: ls -la
     - name: Build & Push Docker images
       uses: docker/build-push-action@v1
       with:
