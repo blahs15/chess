@@ -37,7 +37,7 @@ jobs:
       run: |
         docker images
     - name: Push Docker Image
-      if: $branchName == 'master'
+      # if: $branchName == 'master'
       run: |
         docker login $githubUrl -u publisher -p $GITHUB_TOKEN
         docker push $githubUrl/$imageTag:$version
