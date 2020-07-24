@@ -20,8 +20,8 @@ jobs:
     - name: docker images
       run: |
         docker images
-    - name: Push Docker Image
-      if: ${{ $GITHUB_REF_NAME == 'master' }}
-      run: |
-        docker login $githubUrl -u publisher -p $GITHUB_TOKEN
-        docker push $githubUrl/$imageTag:$version
+    # - name: Push Docker Image
+      # if: ${{ $GITHUB_REF_NAME == 'master' }}
+      # run: |
+        # docker login $githubUrl -u publisher -p $GITHUB_TOKEN
+        # docker push $githubUrl/$imageTag:$version
