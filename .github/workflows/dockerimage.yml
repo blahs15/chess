@@ -1,0 +1,27 @@
+name: Build Docker Image CI
+on:
+  push:
+    paths:
+      - 'docker/Dockerfile'
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
+    steps:
+    - env:
+        githubUrl: docker.pkg.github.com
+        imageTag: $GITHUB_REPOSITORY/$GITHUB_REPOSITORY_NAME
+        version: latest
+      uses: actions/checkout@$GITHUB_REF_NAME
+
+    - name: Build Docker Image
+      run: docker build -t $githubUrl/$imageTag:$version docker
+    - name: docker images
+      run: |
+        docker images
+    - name: Push Docker Image
+      if: $GITHUB_REF_NAME == 'master'
+      run: |
+        docker login $githubUrl -u publisher -p $GITHUB_TOKEN
+        docker push $githubUrl/$imageTag:$version
