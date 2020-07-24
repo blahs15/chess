@@ -13,7 +13,7 @@ jobs:
         githubUrl: docker.pkg.github.com
         imageTag: $GITHUB_REPOSITORY/$GITHUB_REPOSITORY_NAME
         version: latest
-      uses: actions/checkout@${{ github.ref }}
+      # uses: actions/checkout@${{ github.ref }}
 
     - name: echo variables
       run: |
