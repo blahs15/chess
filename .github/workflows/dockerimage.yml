@@ -57,6 +57,6 @@ jobs:
         username: publisher
         password: $GITHUB_TOKEN
         repository: ${{github.repository}}
-        registry: $githubUrl
+        registry: docker.pkg.github.com
         tag_with_ref: true
         path: docker
