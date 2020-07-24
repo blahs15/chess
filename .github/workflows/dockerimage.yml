@@ -13,18 +13,19 @@ jobs:
         githubUrl: docker.pkg.github.com
         imageTag: $GITHUB_REPOSITORY/$GITHUB_REPOSITORY_NAME
         version: latest
-      uses: actions/checkout@${{github.ref}}
+      uses: actions/checkout@${{ github.ref }}
 
     - name: echo variables
       run: |
         echo $githubUrl
         echo $imageTag
         echo $version
-        echo ${{github.ref}}
+        echo ${{ github.ref }}
         echo $GITHUB_REPOSITORY
-        echo ${{github.repository}}
-        echo ${{github.repository.name}}
-        echo ${{github.repository}}/${{github.repository.name}}
+        echo ${{ env.GITHUB_REPOSITORY }}
+        echo ${{ github.repository }}
+        echo ${{ github.repository.name }}
+        echo ${{ github.repository }}/${{ github.repository.name }}
 
     - name: Build Docker Image
       run: docker build -t $githubUrl/$imageTag:$version docker
