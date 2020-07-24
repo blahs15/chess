@@ -58,8 +58,8 @@ jobs:
       with:
         username: publisher
         password: $GITHUB_TOKEN
-        repository: ${{github.repository}}
+        repository: ${{github.repository}}/chess
         registry: docker.pkg.github.com
-        tags: latest
-        # tag_with_ref: true # not working?
+        tag_with_ref: true
+        cache_froms: ${{github.repository}}/chess:latest
         path: docker
