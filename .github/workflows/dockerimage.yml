@@ -7,6 +7,8 @@ on: push
 env:
   githubUrl: docker.pkg.github.com
   branchName: ${GITHUB_REF##*/}
+  testvar1: ${{github.ref}}
+  testvar2: ${{github.ref_name}}
   imageTag: ${{github.repository}}/${GITHUB_REPOSITORY##*/}
   version: latest
 
@@ -19,6 +21,8 @@ jobs:
       run: |
         echo githubUrl: $githubUrl
         echo branchName: $branchName
+        echo testvar1: $testvar1
+        echo testvar2: $testvar2
         echo imageTag: $imageTag
         echo version: $version
         echo {{ github.ref }}: ${{ github.ref }}
