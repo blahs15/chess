@@ -62,4 +62,3 @@ jobs:
         registry: docker.pkg.github.com
         tag_with_ref: true
         path: docker
-        dockerfile: docker/Dockerfile
