@@ -4,49 +4,7 @@ on: push
     # paths:
       # - 'docker/Dockerfile'
 
-env:
-  githubUrl: docker.pkg.github.com
-  imageTag: ${{github.repository}}
-  version: latest
-
 jobs:
-  docker:
-    name: docker build
-    runs-on: ubuntu-20.04
-    steps:
-    - name: echo variables
-      run: |
-        echo githubUrl: $githubUrl
-        echo branchName: $branchName
-        echo testvar1: $testvar1
-        echo testvar2: $testvar2
-        echo imageTag: $imageTag
-        echo version: $version
-        echo {{ github.ref }}: ${{ github.ref }}
-        echo {GITHUB_REF##*/}: ${GITHUB_REF##*/}
-        echo {GITHUB_REF_NAME}: ${GITHUB_REF_NAME}
-        echo {GITHUB_REPOSITORY}: ${GITHUB_REPOSITORY}
-        echo {GITHUB_REPOSITORY##*/}: ${GITHUB_REPOSITORY##*/}
-        echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
-        echo {{ env.GITHUB_REPOSITORY }}: ${{ env.GITHUB_REPOSITORY }}
-        echo {{ env.GITHUB_REPOSITORY_NAME }}: ${{ env.GITHUB_REPOSITORY_NAME }}
-        echo {{ github.repository }}: ${{ github.repository }}
-        echo {{ github.repository.name }}: ${{ github.repository.name }}
-        echo {{ github.repository }}/${{ github.repository.name }}: ${{ github.repository }}/${{ github.repository.name }}
-
-    - name: Build Docker Image
-      run: docker build -t $githubUrl/$imageTag/${GITHUB_REPOSITORY##*/}:$version docker
-    - name: docker images
-      run: |
-        docker images
-    - name: Push Docker Image
-      # can't access these variables in if statement
-      # if: ${{github.ref}} == 'master'
-      # if: ${GITHUB_REF##*/} == 'master'
-      run: |
-        docker login $githubUrl -u publisher -p $GITHUB_TOKEN
-        docker push $githubUrl/$imageTag/${GITHUB_REPOSITORY##*/}:$version
-
   docker_build:
     name: docker_build
     runs-on: ubuntu-20.04
@@ -56,9 +14,9 @@ jobs:
     - name: Build & Push Docker images
       uses: docker/build-push-action@v1
       with:
-        username: publisher
+        username: ${{github.actor}}
         password: ${{secrets.GITHUB_TOKEN}}
-        repository: ${{github.repository}}/chess
+        repository: ${{github.repository}}/${GITHUB_REPOSITORY##*/}
         registry: docker.pkg.github.com
         tag_with_ref: true
         cache_froms: ${{github.repository}}/chess:latest
