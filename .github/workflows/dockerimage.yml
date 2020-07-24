@@ -46,3 +46,17 @@ jobs:
       run: |
         docker login $githubUrl -u publisher -p $GITHUB_TOKEN
         docker push $githubUrl/$imageTag/${GITHUB_REPOSITORY##*/}:$version
+
+  docker_build:
+    name: docker_build
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Build & Push Docker images
+      uses: docker/build-push-action@v1
+      with:
+        username: publisher
+        password: $GITHUB_TOKEN
+        repository: ${{github.repository}}
+        registry: $githubUrl
+        tag_with_ref: true
+        path: docker
