@@ -14,19 +14,20 @@ jobs:
     name: Build
     runs-on: ubuntu-20.04
     steps:
-    # - uses: actions/checkout@${{ github.ref }}
-
     - name: echo variables
       run: |
-        echo $githubUrl
-        echo $imageTag
-        echo $version
-        echo ${{ github.ref }}
-        echo $GITHUB_REPOSITORY
-        echo ${{ env.GITHUB_REPOSITORY }}
-        echo ${{ github.repository }}
-        echo ${{ github.repository.name }}
-        echo ${{ github.repository }}/${{ github.repository.name }}
+        echo githubUrl: $githubUrl
+        echo imageTag: $imageTag
+        echo version: $version
+        echo {{ github.ref }}: ${{ github.ref }}
+        echo {GITHUB_REF##*/}: ${GITHUB_REF##*/}
+        echo {GITHUB_REF_NAME}: ${GITHUB_REF_NAME}
+        echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
+        echo {{ env.GITHUB_REPOSITORY }}: ${{ env.GITHUB_REPOSITORY }}
+        echo {{ env.GITHUB_REPOSITORY_NAME }}: ${{ env.GITHUB_REPOSITORY_NAME }}
+        echo {{ github.repository }}: ${{ github.repository }}
+        echo {{ github.repository.name }}: ${{ github.repository.name }}
+        echo {{ github.repository }}/${{ github.repository.name }}: ${{ github.repository }}/${{ github.repository.name }}
 
     - name: Build Docker Image
       run: docker build -t $githubUrl/$imageTag:$version docker
