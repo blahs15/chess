@@ -19,5 +19,5 @@ jobs:
         repository: ${{github.repository}}/${GITHUB_REPOSITORY##*/}
         registry: docker.pkg.github.com
         tag_with_ref: true
-        cache_froms: ${{github.repository}}/chess:latest
+        cache_froms: ${{github.repository}}/${GITHUB_REPOSITORY##*/}:${GITHUB_REF##*/},${{github.repository}}/${GITHUB_REPOSITORY##*/}:latest
         path: docker
