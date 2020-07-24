@@ -6,7 +6,8 @@ on: push
 
 env:
   githubUrl: docker.pkg.github.com
-  imageTag: $GITHUB_REPOSITORY/$GITHUB_REPOSITORY_NAME
+  branchName: ${GITHUB_REF##*/}
+  imageTag: ${{github.repository}}/${GITHUB_REPOSITORY##*/}
   version: latest
 
 jobs:
@@ -22,6 +23,7 @@ jobs:
         echo {{ github.ref }}: ${{ github.ref }}
         echo {GITHUB_REF##*/}: ${GITHUB_REF##*/}
         echo {GITHUB_REF_NAME}: ${GITHUB_REF_NAME}
+        echo {GITHUB_REPOSITORY}: ${GITHUB_REPOSITORY}
         echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
         echo {{ env.GITHUB_REPOSITORY }}: ${{ env.GITHUB_REPOSITORY }}
         echo {{ env.GITHUB_REPOSITORY_NAME }}: ${{ env.GITHUB_REPOSITORY_NAME }}
@@ -35,7 +37,7 @@ jobs:
       run: |
         docker images
     - name: Push Docker Image
-      if: github.ref == 'master'
+      if: $branchName == 'master'
       run: |
         docker login $githubUrl -u publisher -p $GITHUB_TOKEN
         docker push $githubUrl/$imageTag:$version
