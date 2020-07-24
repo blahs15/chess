@@ -60,5 +60,6 @@ jobs:
         password: $GITHUB_TOKEN
         repository: ${{github.repository}}
         registry: docker.pkg.github.com
-        tag_with_ref: true
+        tags: latest
+        # tag_with_ref: true # not working?
         path: docker
