@@ -1,6 +1,6 @@
 # PlantUML
 
-[PlantUML](https://plantuml.com/) is a great library for creating diagrams that can be used for software design purposes. This document goes through the process of rendering these diagrams inside of a Markdown (`.md`) file.
+[PlantUML](https://plantuml.com/) is a great library for creating diagrams that can be used for software design purposes. This document goes through the process of rendering these diagrams inside of a Markdown (`.md`) file. The local rendering instructions are specifically only for Ubuntu 20.04, and Visual Studio Code. Using any other platform or editor may need alternative methods.
 
 The process for rendering the plantuml diagrams was acquired from [here](https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f).
 
