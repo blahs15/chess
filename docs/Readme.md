@@ -1,6 +1,6 @@
 # PlantUML
 
-PlantUML is a great library for creating diagrams that can be used for software design purposes. This document goes through the process of rendering these diagrams inside of a Markdown (`.md`) file.
+[PlantUML](https://plantuml.com/) is a great library for creating diagrams that can be used for software design purposes. This document goes through the process of rendering these diagrams inside of a Markdown (`.md`) file.
 
 The process for rendering the plantuml diagrams was acquired from [here](https://gist.github.com/noamtamim/f11982b28602bd7e604c233fbe9d910f).
 
@@ -37,10 +37,11 @@ Alice <-- Bob: Another authentication Response
 
 ## Github Rendering
 
+### Software Requirements
 #### Install:
 - PlantUML: `sudo apt-get install -y plantuml`
 
-### Render
+### Re-formatting
 Create your plantuml diagram like you did before, but surround it with comments `<!--` & `-->`. This will cause your plantuml source text to not render in `Markdown Preview Enhanced` or in `Github`. For `Markdown Preview Enhanced`, your diagram will disappear.
 
 You also need to add a title to your diagram. The title goes after the `@startuml` tag.
@@ -79,4 +80,5 @@ When your markdown file is complete, commit both the markdown file and all relat
 
 #### Rendered Example
 Here's the example diagram, rendered.
+
 ![](resources/ExampleDiagram.svg)
