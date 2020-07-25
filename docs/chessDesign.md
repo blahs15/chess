@@ -96,11 +96,11 @@ Piece *- Color
 ```
 -->
 
-![](mainClassDiagram.svg)
+![](resources/mainClassDiagram.svg)
 
 Only the King piece is shown below as an example. Otherwise only pieces that have added information from the base class are included.
 
-![](pieceClassDiagram.svg)
+![](resources/pieceClassDiagram.svg)
 
 ## Program Flow
 
@@ -115,4 +115,4 @@ participant Piece
 ```
 -->
 
-![](mainSequence.svg)
+![](resources/mainSequence.svg)
