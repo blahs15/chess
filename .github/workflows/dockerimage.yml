@@ -1,0 +1,23 @@
+name: Build Docker Image CI
+on:
+  push:
+    paths:
+      - 'docker/Dockerfile'
+
+jobs:
+  docker_build:
+    name: docker_build
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Build & Push Docker images
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{github.actor}}
+        password: ${{secrets.GITHUB_TOKEN}}
+        repository: ${{github.repository}}/chess
+        registry: docker.pkg.github.com
+        tag_with_ref: true
+        cache_froms: ${{github.repository}}/chess:latest
+        path: docker
