@@ -27,7 +27,7 @@ N/A
 
 ## Class Diagrams
 
-<div hidden>
+<!--
 ```puml
 @startuml mainClassDiagram
 class Controller {
@@ -94,7 +94,7 @@ Piece ^- NullPiece
 Piece *- Color
 @enduml
 ```
-</div>
+-->
 
 ![](mainClassDiagram.svg)
 
@@ -104,7 +104,7 @@ Only the King piece is shown below as an example. Otherwise only pieces that hav
 
 ## Program Flow
 
-<div hidden>
+<!--
 ```puml
 @startuml mainSequence
 actor Player
@@ -113,6 +113,6 @@ participant Board
 participant Piece
 @enduml
 ```
-</div>
+-->
 
 ![](mainSequence.svg)
