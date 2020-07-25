@@ -44,6 +44,8 @@ Alice <-- Bob: Another authentication Response
 ### Re-formatting
 Create your plantuml diagram like you did before, but surround it with comments `<!--` & `-->`. This will cause your plantuml source text to not render in `Markdown Preview Enhanced` or in `Github`. For `Markdown Preview Enhanced`, your diagram will disappear.
 
+Note: A `-->` is sometimes used inside a plantuml diagram, and will break the above commenting syntax. Two workarounds are to use `--_>` instead, inside the plantuml diagram. (At the time of writing, this may be a beta feature. Other workarounds may be possible)
+
 You also need to add a title to your diagram. The title goes after the `@startuml` tag.
 
 #### Example PlantUML diagram:
@@ -52,7 +54,9 @@ You also need to add a title to your diagram. The title goes after the `@startum
 ```puml
 @startuml ExampleDiagram
 Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
+'Bob --_> Alice: Authentication Response
+' The following line is a workaround, if the "--_>" feature is not available
+Alice <-- Bob: Authentication Response
 
 Alice -> Bob: Another authentication Request
 Alice <-- Bob: Another authentication Response
