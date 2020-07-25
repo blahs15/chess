@@ -70,7 +70,6 @@ abstract class Piece {
   # Color m_color
   # Position m_pos
   # bool m_hasMoved
-
 }
 
 enum Color {
@@ -93,6 +92,7 @@ class NullPiece {
 Piece ^- King
 Piece ^- NullPiece
 Piece *- Color
+@enduml
 ```
 </div>
 
@@ -104,9 +104,15 @@ Only the King piece is shown below as an example. Otherwise only pieces that hav
 
 ## Program Flow
 
+<div hidden>
 ```puml
+@startuml mainSequence
 actor Player
 participant Controller
 participant Board
 participant Piece
+@enduml
 ```
+</div>
+
+![](mainSequence.svg)
