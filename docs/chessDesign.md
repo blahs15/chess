@@ -79,21 +79,20 @@ enum Color {
   WHITE
 }
 
-class King {
+class King extends Piece {
   + King(Position)
   + std::vector<Position> getMoves()
   + bool checkMove(Position pos)
 }
 
-class NullPiece {
+class NullPiece extends Piece {
   + NullPiece(Position)
   + std::vector<Position> getMoves()
   + bool checkMove(Position pos)
 }
 
-Piece ^- King
-Piece ^- NullPiece
 Piece *- Color
+
 @enduml
 ```
 -->
