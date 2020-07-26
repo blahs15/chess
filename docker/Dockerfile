@@ -25,3 +25,5 @@ RUN \
     pip3 install meson && \
     # end run command with true so that all previous lines end in "&& \"
     true
+
+ENTRYPOINT ["/bin/bash"]
