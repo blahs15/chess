@@ -26,4 +26,4 @@ RUN \
     # end run command with true so that all previous lines end in "&& \"
     true
 
-CMD ["/bin/bash"]
+ENTRYPOINT ["/bin/bash"]
