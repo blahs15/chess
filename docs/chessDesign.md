@@ -32,9 +32,11 @@ N/A
 @startuml mainClassDiagram
 class Controller {
   + Controller()
-  + Controller(Board)
+  + Controller(Board, bool whiteTurn)
   + void run()
+  - std::pair<Position,Position> getMove()
   - Board m_board
+  - bool m_whiteTurn
 }
 
 class Board {
@@ -107,10 +109,30 @@ Only the King piece is shown below as an example. Otherwise only pieces that hav
 <!--
 ```puml
 @startuml mainSequence
-actor Player
-participant Controller
-participant Board
-participant Piece
+actor player as "Player"
+participant controller as "Controller"
+participant board as "Board"
+participant piece as "Piece"
+
+-> controller : run()
+activate controller
+
+loop each turn
+  controller -> player : getMove()
+  controller <-- player
+  controller -> board : checkMove(move)
+
+  board -> piece : checkMove()
+  board <-- piece : true
+  board -> board : makeMove
+  board -> piece : update piece
+
+  controller <-- board
+
+  controller -> controller : switch turns
+end
+
+deactivate controller
 @enduml
 ```
 -->
