@@ -20,8 +20,11 @@ private:
 public:
     Board();
 
-    void board_init();
+    int set_space_array();
 
+    void board_init();
+    void movePiece(Position start, Position end);
+    string print();
 
     // int get_indices(string posn);
     // bool validate_move(int start_column, int start_row, int end_column, int end_row);

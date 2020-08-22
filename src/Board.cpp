@@ -7,9 +7,7 @@ using namespace std;
  * a1 thru h8, corresponding to 64 Position objects, (0,0) thru (7,7).*/
 Board::Board()
 {
-
-    // okay so an array may not the best thing to use.
-    cout << "new board" << endl;
+    cout << "new board created" << endl;
 
     // Create space_array. space_array is a 2d array of length [8][8].
     int _space_array[COL_SIZE][ROW_SIZE];
@@ -21,12 +19,15 @@ Board::Board()
         }
     }
 
-
     // for (int i = 0; i < BOARD_SIZE; i++) {
     //     for (int j = 0; j < BOARD_SIZE; j++) {
     //         cout << space_array[i][j] << endl;
     //     }
     // }
+}
+
+int Board::set_space_array(){
+
 }
 
 /** A function to initialize the board state and pieces on the board. */
